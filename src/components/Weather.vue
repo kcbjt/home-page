@@ -70,9 +70,18 @@ const getWeatherData = async () => {
         windpower: data.condition.day_wind_power,
       };
     } else {
+      // 纯前端获取客户端公网 IP 的方法
+      const getClientIP = async () => {
+        // 使用第三方服务获取公网 IP，例如 ipify.org
+        const res = await fetch('https://api64.ipify.org?format=json');
+        const data = await res.json();
+        return data.ip;
+      };
+
+      // 在 getWeatherData 中使用
+      const userIP = await getClientIP();
       // 获取 Adcode
-      const adCode = await getAdcode(mainKey);
-      console.log(adCode);
+      const adCode = await getAdcode(mainKey, userIP);
       if (adCode.infocode !== "10000") {
         throw "地区查询失败";
       }
