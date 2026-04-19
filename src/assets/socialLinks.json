@@ -6,6 +6,12 @@
     "url": "https://github.com/kcbjt"
   },
   {
+    "name": "Gitee",
+    "icon": "/images/icon/gitee.png",
+    "tip": "去 Gitee 看看",
+    "url": "https://gitee.com/kcbjt"
+  },
+  {
     "name": "BiliBili",
     "icon": "/images/icon/bilibili.png",
     "tip": "(゜-゜)つロ 干杯 ~",

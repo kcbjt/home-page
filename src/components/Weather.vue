@@ -53,51 +53,19 @@ const getTemperature = (min, max) => {
 // 获取天气数据
 const getWeatherData = async () => {
   try {
-    // 获取地理位置信息
-    if (!mainKey) {
-      console.log("未配置，使用备用天气接口");
-      const result = await getOtherWeather();
-      console.log(result);
-      const data = result.result;
+      // 获取天气信息
+      const result = await getWeather();
       weatherData.adCode = {
-        city: data.city.City || "未知地区",
-        // adcode: data.city.cityId,
+          city: result.city,
+          adcode: result.adcode,
       };
       weatherData.weather = {
-        weather: data.condition.day_weather,
-        temperature: getTemperature(data.condition.min_degree, data.condition.max_degree),
-        winddirection: data.condition.day_wind_direction,
-        windpower: data.condition.day_wind_power,
-      };
-    } else {
-      // 纯前端获取客户端公网 IP 的方法
-      const getClientIP = async () => {
-        // 使用第三方服务获取公网 IP，例如 ipify.org
-        const res = await fetch('https://api64.ipify.org?format=json');
-        const data = await res.json();
-        return data.ip;
+        weather: result.weather,
+        temperature: result.temperature,
+        winddirection: result.winddirection,
+        windpower: result.windpower,
       };
 
-      // 在 getWeatherData 中使用
-      const userIP = await getClientIP();
-      // 获取 Adcode
-      const adCode = await getAdcode(mainKey, userIP);
-      if (adCode.infocode !== "10000") {
-        throw "地区查询失败";
-      }
-      weatherData.adCode = {
-        city: adCode.city,
-        adcode: adCode.adcode,
-      };
-      // 获取天气信息
-      const result = await getWeather(mainKey, weatherData.adCode.adcode);
-      weatherData.weather = {
-        weather: result.lives[0].weather,
-        temperature: result.lives[0].temperature,
-        winddirection: result.lives[0].winddirection,
-        windpower: result.lives[0].windpower,
-      };
-    }
   } catch (error) {
     console.error("天气信息获取失败:" + error);
     onError("天气信息获取失败");
