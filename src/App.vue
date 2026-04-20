@@ -2,7 +2,7 @@
   <!-- 加载 -->
   <Loading />
   <!-- 壁纸 -->
-  <Background @loadComplete="loadComplete" />
+  <Background @loadComplete="loadComplete" :blurAmount="20" :brightness="0.5" />
   <!-- 主界面 -->
   <Transition name="fade" mode="out-in">
     <main id="main" v-if="store.imgLoadStatus">

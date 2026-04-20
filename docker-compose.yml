@@ -1,9 +1,17 @@
 version: '3'
 
 services:
-  app:
+  home-page:
     build:
       context: .
       dockerfile: Dockerfile
+    image: home-page:latest
+    container_name: home-page
     ports:
       - "15200:15200"
+    networks:
+      - kcbjt-net
+
+networks:
+  kcbjt-net:
+    driver: bridge

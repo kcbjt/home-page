@@ -74,10 +74,8 @@ pnpm build
 > 安装及配置 Docker 将不在此处说明，请自行解决
 
 ```bash
-# 构建
-docker build -t home .
-# 运行
-docker run -p 12445:12445 -d home
+# 构建# 运行
+docker-compose up -d --build
 ```
 
 ### ⚙️ Vercel 部署
