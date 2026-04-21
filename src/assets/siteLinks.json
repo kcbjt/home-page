@@ -2,7 +2,7 @@
   {
     "icon": "Book",
     "name": "网址导航",
-    "link": "https://web.kcbjt.com/"
+    "link": "https://nav.kcbjt.com/"
   },
   {
     "icon": "Blog",
@@ -12,6 +12,6 @@
   {
     "icon": "EditSettings24Filled",
     "name": "博客管理",
-    "link": "https://web.kcbjt.com/"
+    "link": "https://admin.blog.kcbjt.com/"
   }
 ]
