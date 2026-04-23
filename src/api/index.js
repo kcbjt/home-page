@@ -64,7 +64,7 @@ export const getAdcode = async (key, ip) => {
 // 获取高德地理天气信息
 export const getWeather = async (key, city) => {
   const res = await fetch(
-    `http://111.228.14.226:11000/api/v1/weather`,
+    `http://api.kcbjt.online/api/v1/weather`,
   );
   return await res.json();
 };
